@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home</title>
+</head>
+<body>
+	<h1>Welcome to the Home Page</h1>
+	<br>
+	<table>
+		<tr th:each="user : ${users}">
+			<td th:text="${user.id}">ID: </td>
+			<!-- <td th:text="${user.musician_id}">ID: </td> -->
+			<td th:text="${user.email}">Email: </td>
+			<td th:text="${user.password}">Password: </td>
+		</tr>
+	</table>
+		
+	
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>
