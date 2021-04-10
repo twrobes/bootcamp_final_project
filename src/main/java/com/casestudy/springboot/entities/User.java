@@ -21,11 +21,20 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
+	@Column(name="username", length=50, nullable=false, unique=true)
+	private String username;
+	
 	@Column(name="email", length=50, nullable=false, unique=true)
 	private String email;
 	
 	@Column(name="password", length=24, nullable=false, unique=false)
 	private String password;
+	
+	@Column(name="active", length=24, nullable=false, unique=false)
+	private boolean active;
+	
+	@Column(name="roles", length=24, nullable=false, unique=false)
+	private String roles;
 	
 	@OneToOne(targetEntity = Musician.class, cascade=CascadeType.ALL)
 	@JoinColumn
@@ -34,18 +43,32 @@ public class User {
 	
 	public User() {
 		super();
+		this.active = true;
+		this.roles = "USER";
 	}
 
-	public User(String email, String password, Musician musician) {
+	public User(String username, String email, String password, boolean active, String roles, Musician musician) {
 		super();
+		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.active = active;
+		this.roles = roles;
 		this.musician = musician;
 	}
 
-	public User(Integer id, String email, String password) {
+	public User(String username, String email, String password, boolean active, String roles) {
 		super();
-		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.active = active;
+		this.roles = roles;
+	}
+
+	public User(String username, String email, String password) {
+		super();
+		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
@@ -56,6 +79,14 @@ public class User {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -74,6 +105,22 @@ public class User {
 		this.password = password;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+
 	public Musician getMusician() {
 		return musician;
 	}
@@ -86,10 +133,13 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (active ? 1231 : 1237);
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((musician == null) ? 0 : musician.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -102,6 +152,8 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (active != other.active)
+			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -122,11 +174,22 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (roles == null) {
+			if (other.roles != null)
+				return false;
+		} else if (!roles.equals(other.roles))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", musician=" + musician + "]";
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", active="
+				+ active + ", roles=" + roles + ", musician=" + musician + "]";
 	}
 }

@@ -1,8 +1,7 @@
 package com.casestudy.springboot.entities;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,26 +25,42 @@ public class Playlist {
 	@Column(name="name", length=24, nullable=false, unique=false)
 	private String name;
 	
-	@OneToMany(mappedBy = "playlist")
+	@Column(name="description", length=24, nullable=true, unique=false)
+	private String description;
+	
+	@OneToMany(mappedBy = "playlists")
 	private List<Musician> musician;
 	
 	@ManyToMany(targetEntity = Songs.class)
 	@JoinTable
-	private Set<Songs> songs = new HashSet<>();
+	private List<Songs> songs = new ArrayList<>();
 	
 	public Playlist() {
 		super();
 	}
-
-	public Playlist(String name, List<Musician> musician) {
+	
+	public Playlist(String name) {
 		super();
 		this.name = name;
+	}
+	
+	public Playlist(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+
+	public Playlist(String name, String description, List<Musician> musician) {
+		super();
+		this.name = name;
+		this.description = description;
 		this.musician = musician;
 	}
 
-	public Playlist(String name, List<Musician> musician, Set<Songs> songs) {
+	public Playlist(String name, String description, List<Musician> musician, List<Songs> songs) {
 		super();
 		this.name = name;
+		this.description = description;
 		this.musician = musician;
 		this.songs = songs;
 	}
@@ -66,6 +81,14 @@ public class Playlist {
 		this.name = name;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public List<Musician> getMusician() {
 		return musician;
 	}
@@ -74,11 +97,11 @@ public class Playlist {
 		this.musician = musician;
 	}
 
-	public Set<Songs> getSongs() {
+	public List<Songs> getSongs() {
 		return songs;
 	}
 
-	public void setSongs(Set<Songs> songs) {
+	public void setSongs(List<Songs> songs) {
 		this.songs = songs;
 	}
 
@@ -86,6 +109,7 @@ public class Playlist {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((musician == null) ? 0 : musician.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -102,6 +126,11 @@ public class Playlist {
 		if (getClass() != obj.getClass())
 			return false;
 		Playlist other = (Playlist) obj;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -127,6 +156,7 @@ public class Playlist {
 
 	@Override
 	public String toString() {
-		return "Playlist [id=" + id + ", name=" + name + ", musician=" + musician + ", songs=" + songs + "]";
+		return "Playlist [id=" + id + ", name=" + name + ", description=" + description + ", musician=" + musician
+				+ ", songs=" + songs + "]";
 	}
 }

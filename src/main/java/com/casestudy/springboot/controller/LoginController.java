@@ -23,27 +23,25 @@ public class LoginController {
 		return "login";
 	}
 	
-	//checking for login credentials
-	@RequestMapping(value="login", method=RequestMethod.POST)
-	public String login(@ModelAttribute(name="loginForm") User user, Model model) {
-		
-		String email = user.getEmail();
-		String password = user.getPassword();
-		
-		if (email.equals("admin") && password.equals("admin"))
-			userService.setCurrentUser(1);
-		else if (userService.userIsValid(email, password)) {
-			// if username and password is correct, we are returning to home page
-			return "home";
-		}
-			
-		// if username or password is wrong
-		model.addAttribute("invalidCredentials", true);
-		// returning back to login page
-		System.out.println(email);
-		System.out.println(password);
-		
-		return "login";
-		
-	}
+//	//checking for login credentials
+//	@RequestMapping(value="login", method=RequestMethod.POST)
+//	public String login(@ModelAttribute(name="loginForm") User user, Model model) {
+//		
+//		String username = user.getUsername();
+//		String password = user.getPassword();
+//		
+//		if (username.equals("admin") && password.equals("admin"))
+//			return "home";
+//		else if (userService.userIsValid(username, password)) {
+//			// if username and password is correct, we are returning to home page
+//			return "home";
+//		}
+//			
+//		// if username or password is wrong
+//		model.addAttribute("invalidCredentials", true);
+//		// returning back to login page
+//		
+//		return "login";
+//		
+//	}
 }

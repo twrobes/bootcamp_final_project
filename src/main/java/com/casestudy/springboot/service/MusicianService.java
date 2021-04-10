@@ -2,12 +2,14 @@ package com.casestudy.springboot.service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.casestudy.springboot.DAO.MusicianRepository;
 import com.casestudy.springboot.entities.Musician;
+import com.casestudy.springboot.entities.Playlist;
 
 
 @Service
@@ -74,11 +76,28 @@ public class MusicianService {
 		}
 	}
 	
+	public List<Playlist> getMusicianPlaylists(Musician musician) {
+		if (musician != null) {
+			return musician.getPlaylists();
+		}
+		System.out.println("This musician has no playlists!");
+		
+		return null;
+	}
 	
-	
-	
-	
-	
+	public boolean addPlaylist(Integer musicianId, Playlist playlist) {
+		Optional<Musician> musician = musicianRepository.findById(musicianId);
+		
+		if (musician.isPresent()) {
+			List<Playlist> allPlaylists = musician.get().getPlaylists();
+			allPlaylists.add(playlist);
+			musician.get().setPlaylist(allPlaylists);
+			musicianRepository.save(musician.get());
+			return true;
+		}
+		else
+			return false;
+	}
 	
 	
 }

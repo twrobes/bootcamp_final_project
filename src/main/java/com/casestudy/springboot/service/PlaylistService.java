@@ -1,12 +1,14 @@
 package com.casestudy.springboot.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.casestudy.springboot.DAO.PlaylistRepository;
 import com.casestudy.springboot.entities.Playlist;
+import com.casestudy.springboot.entities.Songs;
 
 @Service
 public class PlaylistService {
@@ -21,13 +23,34 @@ private final PlaylistRepository playlistRepository;
 		return playlistRepository.findAll();
 	}
 	
-	public void deletePlaylist(Integer playlistId) {
+	public boolean deletePlaylist(Integer playlistId) {
 		boolean exists = playlistRepository.existsById(playlistId);
 		
 		if (!exists) {
 			throw new IllegalStateException("Playlist with id " + playlistId + " does not exist");
 		}
-		
 		playlistRepository.deleteById(playlistId);
+		
+		return true;
+	}
+	
+	public Optional<Playlist> findPlaylistById(Integer playlistId)
+	{
+		return playlistRepository.findById(playlistId);
+	}
+	
+	public void addSongToPlaylist(Playlist playlist, Songs song) {
+		
+		if (playlist != null) {
+			List<Songs> allSongs = playlist.getSongs();
+			allSongs.add(song);
+			playlist.setSongs(allSongs);
+		}
+		
+		playlistRepository.save(playlist);
+	}
+	
+	public void addPlaylist(Playlist playlist) {
+		playlistRepository.save(playlist);
 	}
 }

@@ -58,6 +58,17 @@ public class UserService {
 			return null;
 		}
 	}
+	
+	public User getUserByUsername(String username) {
+		User user = userRepository.findUserByUsername(username);
+		
+		if (!(user == null)) {
+			return user;
+		}
+		System.out.println("Did not find a user with that username");
+		
+		return null;
+	}
 
 	public void addNewUser(User user) {
 		Optional<User> userEmail = userRepository.findUserByEmail(user.getEmail());

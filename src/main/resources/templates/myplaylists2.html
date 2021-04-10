@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/playlist.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<header id="header" class="header-transparent">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <a href="/"><img src="assets/img/logo.png" style="max-width: 30%;" alt=""></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="#hero">Regna</a></h1>-->
+      </div>
+
+  </header><!-- End Header -->
+	<a href="/playlists/makeplaylist">Add a Playlist</a>
+
+  <table>
+    <tbody>
+      <tr th:each="playlist : ${playlists}">
+        <td th:text="${playlist.name}"></td>
+      </tr>
+    </tbody>
+  </table>
+  
+    <section class="wrapper">
+    <!-- Row title -->
+    <main class="row title">
+      <ul>
+        <li style="font-size: 1.2rem;">My Playlists</li>
+      </ul>
+    </main>
+    <!-- Row 1 - fadeIn -->
+    <section th:each="playlist : ${playlists}" class="row-fadeIn-wrapper">
+      <article class="row fadeIn nfl">
+        <ul>
+          <li th:text="${playlist.name}"><a href="#"></a><span class="small">(fadeIn)</span></li>
+        </ul>
+        
+        <ul th:each="song : ${playlist.songs}" class="more-content">
+          <li>
+          	<span th:text="${song.title}"></span>
+          	<form th:action="@{/score}" method="post">
+          		<input type="hidden" th:value="${song.id}" name="songId"/>
+          		<button type="submit">Sheet Music / Tab</button>
+          	</form>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </section>
+</body>
+</html>

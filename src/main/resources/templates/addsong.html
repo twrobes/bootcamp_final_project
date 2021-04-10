@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/addsong}" method="post">
+		<input id="artist" class="input100" type="text" name="artist" placeholder="Artist">
+		<input id="title" class="input100" type="text" name="title" placeholder="Title">
+		<input id="scoreId" class="input100" type="text" name="scoreId" placeholder="Score ID">
+		<br>
+		<br>
+		<button type="submit">
+			Add
+		</button>
+	</form>
+</body>
+</html>

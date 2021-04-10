@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/playlists/addtoplaylist}" th:object="${playlists}" method="post">
+		<div>
+			<ul>
+				<li th:each="song : ${songs}">
+		    		<input type="radio" th:value="${song.id}" name="songId"/>
+		    		<label th:text="${song.title}"></label>
+		  		</li>
+			</ul>
+		</div>
+		<div>
+			<select name="playlistId">
+				<option>Select Playlist</option>
+				<option th:each="playlist : ${playlists}" th:value="${playlist.id}" th:text="${playlist.name}"/>
+			</select>
+		</div>
+		<div>
+	    	<button type="submit">Submit</button>
+	  	</div>
+  	</form>
+</body>
+</html>

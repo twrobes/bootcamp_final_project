@@ -36,19 +36,19 @@ public class Musician {
 	
 	@OneToMany(targetEntity = Playlist.class, cascade=CascadeType.ALL)
 	@JoinTable
-	private List<Playlist> playlist = new ArrayList<>();
+	private List<Playlist> playlists = new ArrayList<>();
 	
 	public Musician() {
 		super();
 	}
 
-	public Musician(String fName, String lName, Integer age, User user, List<Playlist> playlist) {
+	public Musician(String fName, String lName, Integer age, User user, List<Playlist> playlists) {
 		super();
 		this.fName = fName;
 		this.lName = lName;
 		this.age = age;
 		this.user = user;
-		this.playlist = playlist;
+		this.playlists = playlists;
 	}
 
 	public Musician(String fName, String lName, Integer age, User user) {
@@ -106,12 +106,12 @@ public class Musician {
 		this.user = user;
 	}
 
-	public List<Playlist> getPlaylist() {
-		return playlist;
+	public List<Playlist> getPlaylists() {
+		return playlists;
 	}
 
-	public void setPlaylist(List<Playlist> playlist) {
-		this.playlist = playlist;
+	public void setPlaylist(List<Playlist> playlists) {
+		this.playlists = playlists;
 	}
 
 	@Override
@@ -122,7 +122,7 @@ public class Musician {
 		result = prime * result + ((fName == null) ? 0 : fName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lName == null) ? 0 : lName.hashCode());
-		result = prime * result + ((playlist == null) ? 0 : playlist.hashCode());
+		result = prime * result + ((playlists == null) ? 0 : playlists.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -156,10 +156,10 @@ public class Musician {
 				return false;
 		} else if (!lName.equals(other.lName))
 			return false;
-		if (playlist == null) {
-			if (other.playlist != null)
+		if (playlists == null) {
+			if (other.playlists != null)
 				return false;
-		} else if (!playlist.equals(other.playlist))
+		} else if (!playlists.equals(other.playlists))
 			return false;
 		if (user == null) {
 			if (other.user != null)
@@ -172,6 +172,6 @@ public class Musician {
 	@Override
 	public String toString() {
 		return "Musician [id=" + id + ", fName=" + fName + ", lName=" + lName + ", age=" + age + ", user=" + user
-				+ ", playlist=" + playlist + "]";
+				+ ", playlist=" + playlists + "]";
 	}
 }
