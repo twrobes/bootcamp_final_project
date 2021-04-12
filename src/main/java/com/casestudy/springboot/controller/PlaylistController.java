@@ -87,6 +87,21 @@ public class PlaylistController {
 		return new ModelAndView("redirect:/playlists/addtoplaylist");
 	}
 	
+	@PostMapping("updateplaylistname")
+	public ModelAndView updatePlaylistName(@RequestParam(name = "playlistId") Integer playlistId,
+										   @RequestParam(name = "playlistName") String playlistName) {
+		ModelAndView mav = new ModelAndView();
+		String playlistNameCap = playlistName.substring(0, 1).toUpperCase() + playlistName.substring(1);
+		Playlist playlistToRename = playlistService.findPlaylistById(playlistId).get();
+		
+		playlistToRename.setName(playlistNameCap);
+		// Saves the playlist to DB
+		playlistService.addPlaylist(playlistToRename);
+		
+		mav.setViewName("redirect:/myplaylists");
+		return mav;
+	}
+	
 	@PostMapping("deletesong")
 	public ModelAndView removeSongFromPlaylist(@RequestParam(name = "songId") Integer songId,
 			  								   @RequestParam(name = "playlistId") Integer playlistId) {
@@ -94,14 +109,8 @@ public class PlaylistController {
 		Songs songToAdd;
 		Playlist userPlaylist;
 		
-		System.out.println(songId + " " + playlistId);
-		
 		userPlaylist = playlistService.findPlaylistById(playlistId).get();
 		songToAdd = songsService.findSongById(songId);
-		
-		System.out.println(userPlaylist.getName());
-		System.out.println(songToAdd.getTitle());
-		
 		playlistService.deleteSongFromPlaylist(userPlaylist, songToAdd);
 		
 		mav.setViewName("redirect:/myplaylists");

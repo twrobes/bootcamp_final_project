@@ -41,16 +41,17 @@
 	</nav>
 	
 	<div class="table-title">
-		<h3 style="padding-top: 2rem; padding-bottom: 2rem;">Playlists</h3>
+		<h3 style="padding-top: 2rem; padding-bottom: 2rem;">My Playlists</h3>
 	</div>
 	<div class="scrolltable">
 	<table class="table-fill">
 		<tbody class="table-hover">
 			<tr th:each="playlist : ${playlists}">
-				<td style="width:100%" th:text="${playlist.name}" class="text-left">
-					<form style="width:37%;height:100%;padding:2px;margin-bottom:0;margin-top:3px;margin-left:0;overflow-y:visible;background-color:#0F1531;" th:action="@{/updateplaylistname}" method="post">
-		          		<label>Update Name</label>
-		          		<input type="text" name="playlistId"/>
+				<td style="width:100%" class="text-left">
+				<span th:text="${playlist.name}"></span>
+				<form style="width:0;height:100%;padding:2px;margin-bottom:0;margin-top:3px;margin-left:0;overflow-y:visible;background-color:#0F1531;" th:action="@{/updateplaylistname}" method="post">
+		          		<input type="hidden" th:value="${playlist.id}" name="playlistId"/>
+		          		<input style="width:70px;padding-left:0;padding-right:0;margin-bottom:5px;height:30px;" placeholder="Name" type="text" name="playlistName" required/>
 		          		<button style="margin:auto; text-align:center;padding:1px;" class="square_btn" type="submit">Update</button>
 		          	</form>
           		</td>
@@ -58,14 +59,15 @@
 						<span th:text="@{${'Artist: ' + song.artist}}"></span>
 						<br><br>
 						<span th:text="@{${'Title: ' + song.title}}"></span>
-			          	<form style="width:37%;height:100%;padding:2px;margin-bottom:0;margin-top:3px;margin-left:0;overflow-y:visible;background-color:#0F1531;" th:action="@{/gotoscore}" method="post">
+						<br>
+			          	<form style="width:0;height:100%;padding:2px;margin-bottom:0;margin-top:3px;margin-left:0;overflow-y:visible;background-color:#0F1531;" th:action="@{/gotoscore}" method="post">
 			          		<input type="hidden" th:value="${song.id}" name="songId"/>
-			          		<button style="margin:auto; text-align:center;padding:1px;" class="square_btn" type="submit">Sheet Music</button>
+			          		<button style="margin:0; text-align:center;padding:1px;" class="square_btn" type="submit">Sheet Music</button>
 			          	</form>
-			          	<form style="width:44%;height:100%;padding:2px;margin-bottom:0;margin-top:3px;margin-left:0;overflow-y:visible;background-color:#0F1531;" th:action="@{/deletesong}" method="post">
+			          	<form style="width:0;height:100%;padding:2px;margin-bottom:0;margin-top:3px;margin-left:0;overflow-y:visible;background-color:#0F1531;" th:action="@{/deletesong}" method="post">
 			          		<input type="hidden" th:value="${song.id}" name="songId"/>
 			          		<input type="hidden" th:value="${playlist.id}" name="playlistId"/>
-			          		<button style="margin:auto; text-align:center;padding:1px;" class="square_btn" type="submit">Remove</button>
+			          		<button style="margin:0; text-align:center;padding:1px;" class="square_btn" type="submit">Remove</button>
 		          		</form>
 					</td>
 			</tr>
