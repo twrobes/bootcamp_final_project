@@ -2,36 +2,91 @@
 <html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Make Playlists</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+<link href="/css/makeplaylist.css" rel="stylesheet">
 </head>
 <body>
+	<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarText">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/myplaylists">My Playlists</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/addsong">Add Songs</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/playlists/makeplaylist">New Playlist</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/playlists/addtoplaylist">Add Songs to Playlist</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+
 <!--Div for Background-->
 <div class="bg text-center">
     <!--Div for Centered Text & Input-->
     <div class="centered">
-        <p class="firstLine"> E &nbsp; M &nbsp; A &nbsp; I &nbsp; L &nbsp; . &nbsp; M &nbsp; E </p>
-        <p class="secondLine">The Simplest Email Client Ever</p>
-        <p> <input class="InputStyle" placeholder="Email me when it's ready &#xf0e0; " style="font-family:Arial, FontAwesome" type="text"> </p>
+        <p class="firstLine">CREATE A PLAYLIST</p>
+        <p class="secondLine">Organize your music!</p>
+        <form th:action="@{/playlists/makeplaylist}" method="POST">
+        <p> <input class="InputStyle" placeholder="Enter Playlist Name" style="font-family:Arial, FontAwesome" type="text" required> </p>
+        <button class="square_btn" type="submit">
+			Create Playlist
+		</button>
+	</form>
     </div>
     <!--Div for bottom Icons-->
     <div class="social-btn"> <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a> <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
     </div>
 </div>
 
-<!--
-	<form th:action="@{/playlists/makeplaylist}" method="POST">
-		<input id="name" class="input100" type="text" name="name" placeholder="Playlist Name">
-		<span class="focus-input100"></span>
-		
-		<button type="submit">
-			Add
-		</button>
-	</form>
-	 -->
-	 
-	 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-	 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Thomas Wrobel</strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+<script>
+	document.addEventListener("DOMContentLoaded", function(){
+		  window.addEventListener('scroll', function() {
+		      if (window.scrollY > 0) {
+		        document.getElementById('navbar').classList.add('fixed-top');
+		        // add padding top to show content behind navbar
+		        navbar_height = document.querySelector('.navbar').offsetHeight;
+		        document.body.style.paddingTop = navbar_height + 'px';
+		      } else {
+		        document.getElementById('navbar_top').classList.remove('fixed-top');
+		         // remove padding top from body
+		        document.body.style.paddingTop = '0';
+		      } 
+		  });
+		}); 
+</script>	
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </body>
 </html>

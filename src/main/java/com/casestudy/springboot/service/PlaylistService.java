@@ -53,4 +53,12 @@ private final PlaylistRepository playlistRepository;
 	public void addPlaylist(Playlist playlist) {
 		playlistRepository.save(playlist);
 	}
+
+	public void deleteSongFromPlaylist(Playlist playlist, Songs song) {
+		List<Songs> allSongs = playlist.getSongs();
+		allSongs.remove(song);
+		playlist.setSongs(allSongs);
+		
+		playlistRepository.save(playlist);
+	}
 }

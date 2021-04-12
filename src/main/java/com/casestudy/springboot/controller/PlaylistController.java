@@ -78,10 +78,33 @@ public class PlaylistController {
 			playlistService.addSongToPlaylist(userPlaylist, songToAdd);
 		else {
 			System.out.println("Cannot add duplicate songs to a playlist");
+			mav.addObject("error", "Error: Cannot Add Duplicates! Please choose another option.");
 			mav.setViewName("/playlists/error");
 			return mav;
 		}
 		
+		mav.setViewName("/playlists/addtoplaylist");
+		return new ModelAndView("redirect:/playlists/addtoplaylist");
+	}
+	
+	@PostMapping("deletesong")
+	public ModelAndView removeSongFromPlaylist(@RequestParam(name = "songId") Integer songId,
+			  								   @RequestParam(name = "playlistId") Integer playlistId) {
+		ModelAndView mav = new ModelAndView();
+		Songs songToAdd;
+		Playlist userPlaylist;
+		
+		System.out.println(songId + " " + playlistId);
+		
+		userPlaylist = playlistService.findPlaylistById(playlistId).get();
+		songToAdd = songsService.findSongById(songId);
+		
+		System.out.println(userPlaylist.getName());
+		System.out.println(songToAdd.getTitle());
+		
+		playlistService.deleteSongFromPlaylist(userPlaylist, songToAdd);
+		
+		mav.setViewName("redirect:/myplaylists");
 		return mav;
 	}
 	

@@ -1,0 +1,275 @@
+@charset "ISO-8859-1";
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+body {
+	  /*background:#272F84 url(http://www.luismruiz.com/img/blured.jpg)no-repeat center center fixed;*/
+  	-webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	  background-image: url(http://i.imgur.com/w16HASj.png);
+}
+
+.padding {
+	margin-top: 12%;
+}
+
+.card {
+	background-color: #131742;
+}
+
+.card-body {
+	background-color: #0F1876;
+}
+
+.accordion {
+	width: 60%;
+	margin: auto;
+	padding-bottom: 10rem;
+}
+
+.form-check {
+	background-color: #0F1876;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 2px;
+	color: white;
+}
+
+.square_btn{
+	margin-top: 3rem;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-left: solid 4px #0F1876;
+    border-right: solid 4px #0F1876;
+    color: white;
+    background: #517DD7;
+    transition: .4s;
+}
+
+.square_btn:hover {
+    background: #0F1876;
+    color: #FFF;
+}
+
+.dropdown-menu.show {
+    display: block;
+    overflow-y:auto;
+}
+
+.dropdown-item {
+	background-color: #0F1876;
+	color: white;
+}
+
+.dropdown-item:hover {
+	background-color: #1C2EE8;
+}
+
+.form-check-label {
+	padding-right: 10px;
+}
+
+input[type=radio] {
+	width: 15px;
+	height: 15px;
+}
+
+.list-group {
+	padding-bottom: 2rem;
+}
+
+.list-group-item {
+	background-color: #0F1876;
+}
+
+.list-group-item:hover {
+	background-color: #1726C2;
+}
+
+.list-group-item:focus {
+	background-color: #1726C2;
+}
+
+span {
+	color: white;
+}
+
+form {
+    margin-left:auto;
+    margin-right:auto;
+    width: 343px;
+    padding:30px;
+    margin-bottom: 5rem;
+    border: 1px solid rgba(0,0,0,.2);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background: rgba(0, 0, 0, 0.5); 
+    -moz-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    overflow-y: auto; 
+}
+
+img {
+	max-width:100%;
+	max-height:auto;
+}
+
+input {
+    width: 276px;
+    height: 48px;
+    border: 1px solid rgba(255,255,255,.4);
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box; 
+    display:block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size:18px;
+    color:#fff;
+    padding-left:20px;
+    padding-right:20px;
+    margin-bottom:20px;
+}
+
+input[type=submit] {
+    cursor:pointer;
+}
+
+input.name {
+	  background: rgba(255, 255, 255, 0.4) url(http://luismruiz.com/img/gemicon_name.png) no-repeat scroll 16px 16px; 
+	  padding-left:45px;
+}
+
+input.email {
+	  background: rgba(255, 255, 255, 0.4) url(http://luismruiz.com/img/gemicon_email.png) no-repeat scroll 16px 20px;
+	  padding-left:45px;
+}
+
+input.message {
+	  background: rgba(255, 255, 255, 0.4) url(http://luismruiz.com/img/gemicon_message.png) no-repeat scroll 16px 16px;
+	  padding-left:45px;
+}
+
+::-webkit-input-placeholder {
+	  color: #fff;
+}
+
+:-moz-placeholder{ 
+    color: #fff; 
+}
+
+::-moz-placeholder {
+    color: #fff;
+}
+
+:-ms-input-placeholder {  
+	  color: #fff; 
+}
+
+input:focus, textarea:focus { 
+	  background-color: rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
+    -webkit-box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
+    box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
+	  overflow: hidden; 
+}
+
+.btn-link:focus {
+	text-decoration:none;
+}
+
+a {
+	color: #FF6308;
+}
+
+p {
+	color: #FFFFF8;
+}
+
+.btn {
+	text-decoration:none;
+	  height: 44px;
+	  -moz-border-radius: 4px;
+	  -webkit-border-radius: 4px;
+	  border-radius: 4px;
+    border: 1px solid #253737;
+    background: #0C0E28;
+    background: -webkit-gradient(linear, left top, left bottom, from(#6da5a3), to(#416b68));
+    background: -webkit-linear-gradient(top, #517DD7, #1755D7);
+    background: -moz-linear-gradient(top, #517DD7, #1755D7);
+    background: -ms-linear-gradient(top, #517DD7, #1755D7);
+    background: -o-linear-gradient(top, #517DD7, #1755D7);
+    background-image: -ms-linear-gradient(top, #6da5a3 0%, #416b68 100%);
+    padding: 10.5px 21px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: rgba(255,255,255,0.1) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+    -moz-box-shadow: rgba(255,255,255,0.1) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+    box-shadow: rgba(255,255,255,0.1) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+    text-shadow: #333333 0 1px 0;
+    color: #020006;
+}
+
+.btn:hover {
+	text-decoration:none;
+    border: 1px solid #253737;
+    text-shadow: #333333 0 1px 0;
+    background: #416b68;
+    background: -webkit-gradient(linear, left top, left bottom, from(#77b2b0), to(#416b68));
+    background: -webkit-linear-gradient(top, #0533E8, #042195);
+    background: -moz-linear-gradient(top, #0533E8, #042195);
+    background: -ms-linear-gradient(top, #0533E8, #042195);
+    background: -o-linear-gradient(top, #0533E8, #042195);
+    background-image: -ms-linear-gradient(top, #77b2b0 0%, #416b68 100%);
+    color: #fff;
+ }
+
+.btn:active {
+    margin-top:1px;
+    text-shadow: #333333 0 -1px 0;
+    border: 1px solid #253737;
+    background: #6da5a3;
+    background: -webkit-gradient(linear, left top, left bottom, from(#416b68), to(#416b68));
+    background: -webkit-linear-gradient(top, #416b68, #609391);
+    background: -moz-linear-gradient(top, #416b68, #6da5a3);
+    background: -ms-linear-gradient(top, #416b68, #6da5a3);
+    background: -o-linear-gradient(top, #416b68, #6da5a3);
+    background-image: -ms-linear-gradient(top, #416b68 0%, #6da5a3 100%);
+    color: #fff;
+    -webkit-box-shadow: rgba(255,255,255,0) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+    -moz-box-shadow: rgba(255,255,255,0) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+    box-shadow: rgba(255,255,255,0) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+   }
+   
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: #343b40;
+  padding: 30px 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+#footer .copyright {
+  text-align: center;
+}
+
+#footer .credits {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #ccc;
+}

@@ -41,70 +41,24 @@
 		<span style="text-align:center; font-size:2.2rem; color:red;" th:if="${error != null}" th:text="${error}">Error</span>
 	</div>
 	
-	<form style="margin: auto; width: 40%;" th:action="@{/playlists/addtoplaylist}" th:object="${playlists}" method="post">
-		<div class="list-group">
-			<div th:each="song : ${songs}" class="form-check">
-			  <input class="form-check-input" type="radio" th:value="${song.id}" name="songId" required>
-			  <label class="form-check-label">
-			    <span th:text="@{${'Artist: ' + song.artist}}"></span>
-			    <br>
-			    <span th:text="@{${'Title: ' + song.title}}"></span>
-			  </label>
-			</div>
-	  	</div>
-	  	
-	  	<div class="dropdown">
-		    <select style="background-color: #0F1876; color:white;" class="btn btn-secondary dropdown-toggle" aria-labelledby="dropdownMenuButton" name="playlistId" required>
-				<option value="">Select Playlist</option>
-				<option class="dropdown-item" th:each="playlist : ${playlists}" th:value="${playlist.id}" th:text="${playlist.name}"/>
-			</select>
-		</div>
-		
-		<div>
-	    	<button class="square_btn" type="submit">Submit</button>
-	  	</div>
-	</form>
-	
-	<div class="padding"></div>
-	
 <!-- ======= Footer ======= -->
-  <footer style="clear:both;
-  width: 100%;
-  bottom: 0;
-  left: 0;" id="footer">
-    <div class="footer-top">
-      <div class="container">
+ <footer id="footer">
+   <div class="footer-top">
+     <div class="container">
 
-      </div>
-    </div>
+     </div>
+   </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong>Thomas Wrobel</strong>. All Rights Reserved
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-	
+   <div class="container">
+     <div class="copyright">
+       &copy; Copyright <strong>Thomas Wrobel</strong>. All Rights Reserved
+     </div>
+   </div>
+ </footer><!-- End Footer -->
 <script>
-	document.addEventListener("DOMContentLoaded", function(){
-		  window.addEventListener('scroll', function() {
-		      if (window.scrollY > 0) {
-		        document.getElementById('navbar').classList.add('fixed-top');
-		        // add padding top to show content behind navbar
-		        navbar_height = document.querySelector('.navbar').offsetHeight;
-		        document.body.style.paddingTop = navbar_height + 'px';
-		      } else {
-		        document.getElementById('navbar_top').classList.remove('fixed-top');
-		         // remove padding top from body
-		        document.body.style.paddingTop = '0';
-		      } 
-		  });
-		}); 
-</script>
-<script>
-$(".dropdown-menu select").click(function(){
-	  $(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
-});
+	window.setTimeout(function(){
+	window.location.href='/playlists/addtoplaylist';
+	}, 2000);
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
