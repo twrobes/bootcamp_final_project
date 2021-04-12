@@ -51,7 +51,7 @@
 				<span th:text="${playlist.name}"></span>
 				<form style="width:0;height:100%;padding:2px;margin-bottom:0;margin-top:3px;margin-left:0;overflow-y:visible;background-color:#0F1531;" th:action="@{/updateplaylistname}" method="post">
 		          		<input type="hidden" th:value="${playlist.id}" name="playlistId"/>
-		          		<input style="width:70px;padding-left:0;padding-right:0;margin-bottom:5px;height:30px;" placeholder="Name" type="text" name="playlistName" required/>
+		          		<input style="width:200px;padding-left:0;padding-right:0;margin-bottom:5px;height:30px;" placeholder="Name" type="text" name="playlistName" maxlength="40" required/>
 		          		<button style="margin:auto; text-align:center;padding:1px;" class="square_btn" type="submit">Update</button>
 		          	</form>
           		</td>

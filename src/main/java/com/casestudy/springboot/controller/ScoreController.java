@@ -1,5 +1,7 @@
 package com.casestudy.springboot.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,10 +43,21 @@ public class ScoreController {
 								   @RequestParam(name = "scoreId") String scoreId) {
 		
 		ModelAndView mav = new ModelAndView("addsong");
-		
 		Songs newSong = new Songs(songArtist, songTitle, scoreId);
-		songsService.addSong(newSong);
+		ArrayList<String> array = new ArrayList<>();
 		
+		songsService.getSongs().forEach(s -> array.add(s.getScore()));
+		
+		if (!(array.contains(scoreId))) {
+			songsService.addSong(newSong);
+		}
+		else {
+			mav.addObject("error", "Error: Song already add to the website! Please add a different song");
+			mav.setViewName("/songerror");
+			return mav;
+		}
+		
+		mav.setViewName("redirect:/addsong");
 		return mav;
 	}
 	

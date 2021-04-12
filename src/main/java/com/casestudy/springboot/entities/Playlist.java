@@ -22,10 +22,10 @@ public class Playlist {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name="name", length=24, nullable=false, unique=false)
+	@Column(name="name", length=50, nullable=false, unique=false)
 	private String name;
 	
-	@Column(name="description", length=24, nullable=true, unique=false)
+	@Column(name="description", length=255, nullable=true, unique=false)
 	private String description;
 	
 	@OneToMany(mappedBy = "playlists")

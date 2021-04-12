@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Songs</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+	<link rel="stylesheet" href="/css/addsong.css"/>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarText">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/myplaylists">My Playlists</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/addsong">Add Songs</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/playlists/makeplaylist">New Playlist</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/playlists/addtoplaylist">Add Songs to Playlist</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	
+	<div th:if="${error != null}" style="margin: auto; width: 30%; border: 3px solid red; padding: 5px; text-align:center;">
+		<span style="text-align:center; font-size:2.2rem; color:red;" th:if="${error != null}" th:text="${error}">Error</span>
+	</div>
+
+<!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Thomas Wrobel</strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+<script>
+	window.setTimeout(function(){
+	window.location.href='/addsong';
+	}, 2000);
+</script>
+</body>
+</html>

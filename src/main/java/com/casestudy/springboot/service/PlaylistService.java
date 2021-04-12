@@ -50,6 +50,10 @@ private final PlaylistRepository playlistRepository;
 		playlistRepository.save(playlist);
 	}
 	
+	public Integer getTotalPlaylists() {
+		return playlistRepository.findAll().size();
+	}
+	
 	public void addPlaylist(Playlist playlist) {
 		playlistRepository.save(playlist);
 	}

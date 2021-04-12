@@ -47,6 +47,10 @@ public class UserService {
 		return this.user;
 	}
 	
+	public Integer getTotalUsers() {
+		return userRepository.findAll().size();
+	}
+	
 	public User getUserByEmail(String email) {
 		Optional<User> user = userRepository.findUserByEmail(email);
 		

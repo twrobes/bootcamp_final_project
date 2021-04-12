@@ -32,6 +32,10 @@ private final SongsRepository songsRepository;
 		return song.get();
 	}
 	
+	public Integer getTotalSongs() {
+		return songsRepository.findAll().size();
+	}
+	
 	public void deleteSong(Integer songsId) {
 		boolean exists = songsRepository.existsById(songsId);
 		

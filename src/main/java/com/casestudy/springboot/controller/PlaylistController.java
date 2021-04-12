@@ -1,5 +1,6 @@
 package com.casestudy.springboot.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,6 +129,7 @@ public class PlaylistController {
 		// Capitalize first letter
 		String playlistNameCap = playlistName.substring(0, 1).toUpperCase() + playlistName.substring(1);
 		Playlist newPlaylist;
+		ModelAndView mav = new ModelAndView();
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User currentUser = userService.getUserByUsername(auth.getName());
@@ -138,11 +140,23 @@ public class PlaylistController {
 		else
 			newPlaylist = new Playlist(playlistNameCap);
 		
-		playlistService.addPlaylist(newPlaylist);
+		ArrayList<String> array = new ArrayList<>();
+		currentUser.getMusician().getPlaylists().forEach(p -> array.add(p.getName()));
 		
-		musicianService.addPlaylist(currentUser.getMusician().getId(), newPlaylist);
+		if (!(array.contains(newPlaylist.getName())))
+		{
+			playlistService.addPlaylist(newPlaylist);
+			musicianService.addPlaylist(currentUser.getMusician().getId(), newPlaylist);
+		}
+		else {
+			System.out.println("Cannot add duplicate songs to a playlist");
+			mav.addObject("error", "Error: Cannot Add Duplicates! Please use a different name.");
+			mav.setViewName("/playlisterror");
+			return mav;
+		}
 		
-		return new ModelAndView("redirect:/myplaylists");
+		mav.setViewName("redirect:/myplaylists");
+		return mav;
 	}
 	
 }

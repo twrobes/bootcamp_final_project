@@ -57,7 +57,7 @@
           <li class="menu-has-children"><a href="/myplaylists">My Playlists</a>
             <ul>
               <li><a href="/playlists/makeplaylist">Create Playlist</a></li>
-              <li><a href="/playlists/addtoplaylist">Add Score To Playlist</a></li>
+              <li><a href="/playlists/addtoplaylist">Add Song To Playlist</a></li>
               <li><a href="/addsong">Add More Songs</a></li>
             </ul>
           </li>
@@ -83,7 +83,7 @@
         <div class="row about-container">
 
           <div class="col-lg-6 content order-lg-1 order-2">
-            <h2 class="title">Few Words About Us</h2>
+            <h2 class="title">Services</h2>
             <p>
               We are musicians and understand that keeping track of sheet music online can be hard, but we want to make that a little easier. By utilizing playlists,
               you will be able to keep track of all your music in one spot. 
@@ -97,8 +97,8 @@
 
             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
               <div class="icon"><i class="fa fa-bar-chart"></i></div>
-              <h4 class="title"><a href="">Add Score To Playlist</a></h4>
-              <p class="description">This function allows you to add songs to your playlist with the attached sheet music, so you can access it from one spot.</p>
+              <h4 class="title"><a href="">Add Songs To Playlist</a></h4>
+              <p class="description">This function allows you to add song to your playlist with the attached sheet music, so you can access it from one spot.</p>
             </div>
             
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
@@ -125,17 +125,17 @@
         <div class="row counters">
 
           <div class="col-lg-4 col-6 text-center">
-            <span data-toggle="counter-up">232</span>
+            <span th:text="${totalsongs}" data-toggle="counter-up" ></span>
             <p>Total Songs Added</p>
           </div>
 
           <div class="col-lg-4 col-6 text-center">
-            <span data-toggle="counter-up">521</span>
+            <span th:text="${totalplaylists}" data-toggle="counter-up"></span>
             <p>Amount Of Playlists</p>
           </div>
 
           <div class="col-lg-4 col-6 text-center">
-            <span data-toggle="counter-up">1,463</span>
+            <span th:text="${totalusers}" data-toggle="counter-up"></span>
             <p>Number Of Users</p>
           </div>
         </div>

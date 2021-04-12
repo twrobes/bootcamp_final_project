@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="ISO-8859-1">
-<title>Make Playlists</title>
+<title>Error</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
@@ -33,6 +33,10 @@
 	    </ul>
 	  </div>
 	</nav>
+	
+	<div th:if="${error != null}" style="margin: auto; width: 30%; border: 3px solid red; padding: 5px; text-align:center;">
+		<span style="text-align:center; font-size:2.2rem; color:red;" th:if="${error != null}" th:text="${error}">Error</span>
+	</div>
 
 <!--Div for Background-->
 <div class="bg text-center">
@@ -68,20 +72,9 @@
   </footer><!-- End Footer -->
 
 <script>
-	document.addEventListener("DOMContentLoaded", function(){
-		  window.addEventListener('scroll', function() {
-		      if (window.scrollY > 0) {
-		        document.getElementById('navbar').classList.add('fixed-top');
-		        // add padding top to show content behind navbar
-		        navbar_height = document.querySelector('.navbar').offsetHeight;
-		        document.body.style.paddingTop = navbar_height + 'px';
-		      } else {
-		        document.getElementById('navbar_top').classList.remove('fixed-top');
-		         // remove padding top from body
-		        document.body.style.paddingTop = '0';
-		      } 
-		  });
-		}); 
+	window.setTimeout(function(){
+	window.location.href='/playlists/makeplaylist';
+	}, 2000);
 </script>	
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
